@@ -18,5 +18,7 @@ I made a quick and simple shell script that deploy symfony and all the requireme
 wget -O https://raw.githubusercontent.com/KriKrixs/SymfonyFastInstall/main/script.sh - | bash
 ```
 
+------------
+
 This script is not perfect at all, it is based on my little knowing on Shell Script.
 If you have any feedback, feel free to add me on discord: OMDN | Krixs#1106
