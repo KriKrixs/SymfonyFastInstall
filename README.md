@@ -15,7 +15,7 @@ I made a quick and simple shell script that deploy symfony and all the requireme
 ## Get the script on your machine.
 
 ```
-wget -O https://raw.githubusercontent.com/KriKrixs/SymfonyFastInstall/main/script.sh - | bash
+wget https://raw.githubusercontent.com/KriKrixs/SymfonyFastInstall/main/script.sh -O - | bash
 ```
 
 ------------
