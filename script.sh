@@ -3,6 +3,7 @@
 # APT Update
 echo "APT Update"
 sudo apt update -qq
+sudo apt install -y -qq curl
 echo "APT Update OK"
 
 # Node Version Manager installation
