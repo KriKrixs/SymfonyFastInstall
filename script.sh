@@ -7,7 +7,7 @@ echo "APT Update OK"
 
 # Node Version Manager installation
 echo "Node Version Manager installation"
-wget https://raw.githubusercontent.com/nvm-sh/v0.37.2/install.sh
+wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh
 source install.sh
 echo "Node Version Manager OK"
 
