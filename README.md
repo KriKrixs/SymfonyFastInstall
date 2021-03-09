@@ -1,6 +1,6 @@
 # SymfonyFastInstall
 
-LINUX ONLY (Tested on Debian 10)
+LINUX ONLY
 - Debian 10 ✅
 - Ubuntu 18.04 ❌
 
