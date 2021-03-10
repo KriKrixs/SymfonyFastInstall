@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Get OS and Version
+if [ -f /etc/os-release ]; 
+then
+    . /etc/os-release
+    OS=$NAME
+    VER=$VERSION_ID
+fi
+
 # APT Update
 echo "APT Update"
 sudo apt update -qq
@@ -19,6 +27,10 @@ echo "Node Version Manager OK"
 echo "Reload session"
 source ~/.profile
 source ~/.bashrc
+if [[ $OS == "Ubuntu" ]]
+then
+	source /etc/environment
+fi
 echo "Reload OK"
 
 # Install latest LTS Node.JS version
@@ -26,17 +38,27 @@ echo "Install latest LTS Node.JS version"
 nvm install --lts
 echo "Node OK"
 
-# Add SURY PHP PPA repository
-echo "Add SURY PHP PPA repository"
-sudo apt -y -qq install lsb-release apt-transport-https ca-certificates
-sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
-echo "Repo OK"
-
 # Install PHP 7.4
 echo "Install PHP 7.4"
 sudo apt update -qq
-sudo apt -y -qq install php7.4
+sudo apt -y -qq install lsb-release apt-transport-https ca-certificates 
+if [[ $OS == "Ubuntu" ]]
+then
+	sudo apt -y -qq install software-properties-common
+
+	if [[ $VER == *"18."* ]];
+	then
+		sudo add-apt-repository ppa:ondrej/php
+		sudo apt update -y -qq
+	fi	
+elif [[ $OS == *"Debian"* ]];
+then
+	sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+	echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+	sudo apt update -y -qq
+fi
+sudo apt install -y -qq php7.4
+
 echo "PHP 7.4 OK"
 
 # Install Composer
@@ -68,11 +90,15 @@ echo "Symfony OK"
 echo "Reload session"
 source ~/.profile
 source ~/.bashrc
+if [[ $OS == "Ubuntu" ]]
+then
+	source /etc/environment
+fi
 echo "Reload OK"
 
 # Install all symfony requirements
 echo "Install all symfony requirements"
-sudo apt install -y php7.4-{xml,dom,mbstring,intl,mysql}
+sudo apt install -y -qq php7.4-{xml,dom,mbstring,intl,mysql}
 echo "Symfony requirements OK"
 
 # Clearing symfony installation file
