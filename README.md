@@ -2,7 +2,8 @@
 
 LINUX ONLY
 - Debian 10 ✅
-- Ubuntu 18.04 ❌
+- Ubuntu 18.04 ✅
+- Ubuntu 20.10 ✅
 
 Because installing Symfony can be rough and long.
 
