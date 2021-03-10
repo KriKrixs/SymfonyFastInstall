@@ -15,7 +15,9 @@ I made a quick and simple shell script that deploy symfony and all the requireme
 - Symfony (globally)
 - php-xml, php-dom, php-mbstring, php-intl, php-mysql
 
-## Get the script on your machine.
+## Script Usage
+
+Simply run the command bellow, to launch the script
 
 ```
 wget https://raw.githubusercontent.com/KriKrixs/SymfonyFastInstall/main/script.sh -O - | bash
